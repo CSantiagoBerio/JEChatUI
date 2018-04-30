@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="JEChat">
+<head>
+
+  <!-- Navigation Bar -->
+  <header>
+    <nav>
+      <div class="nav-wrapper teal darken-1">
+        <a href="#" class="brand-logo">JEChat</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="index.html?#!/JEChat/login">Login</a></li>
+          <li><a href="index.html?#!/JEChat/1">Profile</a></li>
+          <li><a href="index.html?#!/JEChat/1/Groupchats">Groupchats</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+    <meta charset="UTF-8">
+    <title>JECHAT</title>
+
+
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Materialize -->
+    <link href = "css/materialize.css" rel = "stylesheet">
+    <script src="js/materialize.js"></script>
+    <!-- AngularJS -->
+    <script src="js/angular.js"></script>
+    <script src="js/angular-route.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- App Functionality -->
+    <script type="text/javascript" src="appjs/main.js"></script>
+    <script type="text/javascript" src="appjs/chat.js"></script>
+    <script type="text/javascript" src="appjs/users.js"></script>
+    <script type="text/javascript" src="appjs/group.js"></script>
+</head>
+<body>
+    <ng-view>
+    </ng-view>
+    <!-- <script type="text/javascript" src="appjs/main.js"></script>
+    <script type="text/javascript" src="appjs/chat.js"></script>
+    <script type="text/javascript" src="appjs/users.js"></script>
+    <script type="text/javascript" src="appjs/group.js"></script> -->
+</body>
+</html>

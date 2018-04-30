@@ -1,0 +1,40 @@
+<div ng-cloak style="align-content: center">
+    <div class="row">
+      <div class="col s3"></div>
+        <div class="col s6 m6">
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-title">Profile</span>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th>First Name: </th>
+                                <th>{{profileCtrl.profile.firstname}}</th>
+                            </tr>
+                            <tr>
+                                <th>Last Name: </th>
+                                <th>{{profileCtrl.profile.lastname}}</th>
+                            </tr>
+                            <tr>
+                                <th>Phone #: </th>
+                                <th>{{profileCtrl.profile.phone}}</th>
+                            </tr>
+                            <tr>
+                                <th>E-mail: </th>
+                                <th>{{profileCtrl.profile.email}}</th>
+                            </tr>
+                            <tr>
+                                <th>Username: </th>
+                                <th>{{profileCtrl.profile.username}}</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-action">
+                    <a href="#/JEChat/login">Exit</a>
+                </div>
+            </div>
+        </div>
+        <div class="col s3"></div>
+    </div>
+</div>
