@@ -3,9 +3,10 @@ angular.module('JEChat').controller('ChatController', ['$http', '$log', '$scope'
 
         var thisCtrl = this;
 
-        this.messageList = {};
+        this.messageList = [];
         this.reactions = {};
         this.user = {};
+        this.counter = 0;
 
         this.loadMessages = function(){
 
@@ -65,7 +66,8 @@ angular.module('JEChat').controller('ChatController', ['$http', '$log', '$scope'
                 thisCtrl.user = response.data.User;
                 author = thisCtrl.user.firstname + " " + thisCtrl.user.lastname;
 
-
+                if(thisCtrl.messageList.length == 0) {nextId=0;};
+                console.log(nextId);
                 thisCtrl.messageList.unshift({"id": nextId, "content" : msg, "name" : author, "like" : 0, "nolike" : 0});
                 thisCtrl.newText = "";
 

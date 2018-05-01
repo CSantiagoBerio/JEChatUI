@@ -1,5 +1,5 @@
-angular.module('JEChat').controller('GroupController', ['$http', '$log', '$scope', '$routeParams',
-    function ($http, $log, $scope, $routeParams) {
+angular.module('JEChat').controller('GroupController', ['$http', '$log', '$scope', '$routeParams', '$location',
+    function ($http, $log, $scope, $routeParams, $location) {
 
         var thisCtrl = this;
 
@@ -38,6 +38,13 @@ angular.module('JEChat').controller('GroupController', ['$http', '$log', '$scope
                     }
                 });
         };
+
+        this.entergroup = function(groupname){
+          var user = $routeParams.uid;
+
+          $location.url('/JEChat/'+user+'/Groupchats/'+groupname);
+
+        }
 
         this.loadUserGroups();
     }]);

@@ -12,7 +12,7 @@
         <tbody>
             <tr ng-repeat="group in groupCtrl.groupchats">
                 <td>
-                    <a class="waves-effect  teal darken-1 btn-small" ng-click="">Enter</a>
+                    <a class="waves-effect  teal darken-1 btn-small" ng-click="groupCtrl.entergroup(group.groupname)">Enter</a>
                 </td>
                 <td>{{group.groupname}}</td>
                 <td>{{group.date}}</td>
