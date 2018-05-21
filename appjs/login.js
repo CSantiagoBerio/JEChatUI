@@ -38,4 +38,8 @@ angular.module('JEChat').controller('LogController', ['$scope', '$location', '$h
 
     }
 
+    $scope.signup = function(){
+      $location.path('/JEChat/register');
+    }
+
 }]);

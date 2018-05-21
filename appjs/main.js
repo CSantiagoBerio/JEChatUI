@@ -15,6 +15,12 @@
             controllerAs : 'loginCtrl'
 
         })
+        .when('/JEChat/register', {
+          templateUrl: 'pages/register.html',
+          controller: 'RegisterController',
+          controllerAs: 'registerCtrl'
+
+        })
         .when('/JEChat/:uid/Groupchats', {
             templateUrl: 'pages/groupchats.html',
             controller: 'GroupController',
@@ -31,10 +37,6 @@
           templateUrl: 'pages/chat.html',
           controller: 'ChatController',
           controllerAs: 'chatCtrl'
-
-        })
-        .when('/JEChat/register', {
-          templateUrl: 'pages/register.html'
 
         })
         .otherwise({

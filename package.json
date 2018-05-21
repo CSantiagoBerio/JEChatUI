@@ -1,0 +1,21 @@
+{
+  "name": "jechat",
+  "version": "1.0.0",
+  "description": "Messagin App as class project",
+  "main": "appjs/main.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CSantiagoBerio/JEChatUI.git"
+  },
+  "author": "CSantiagoBerio",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CSantiagoBerio/JEChatUI/issues"
+  },
+  "homepage": "https://github.com/CSantiagoBerio/JEChatUI#readme"
+}
