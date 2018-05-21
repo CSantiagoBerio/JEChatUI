@@ -5,10 +5,14 @@
     app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider, $location) {
 
         $routeProvider
+        .when('/JEChat', {
+          templateUrl: 'pages/home.html'
+
+        })
         .when('/JEChat/login', {
-            templateUrl: 'pages/login.html'//,
-            //controller: 'LogController',
-            //controllerAs : 'loginCtrl'
+            templateUrl: 'pages/login.html',
+            controller: 'LogController',
+            controllerAs : 'loginCtrl'
 
         })
         .when('/JEChat/:uid/Groupchats', {
@@ -23,11 +27,14 @@
             controllerAs : 'profileCtrl'
 
         })
-
         .when('/JEChat/:user/Groupchats/:groupname', {
           templateUrl: 'pages/chat.html',
           controller: 'ChatController',
           controllerAs: 'chatCtrl'
+
+        })
+        .when('/JEChat/register', {
+          templateUrl: 'pages/register.html'
 
         })
         .otherwise({
