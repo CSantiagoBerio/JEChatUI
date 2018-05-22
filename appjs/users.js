@@ -5,6 +5,7 @@ angular.module('JEChat').controller('ProfileController', ['$http', '$log', '$sco
 
         this.profile = {};
         this.groupchats = {};
+        this.population = {};
 
 
         this.loadProfile = function () {
@@ -12,7 +13,7 @@ angular.module('JEChat').controller('ProfileController', ['$http', '$log', '$sco
             var usrid = $routeParams.userid;
             console.log('Im inside users.js');
             //Url for target user information
-            var url = "http://localhost:4545/JEChat/" + usrid;
+            var url = "https://jechat-restapi.herokuapp.com/JEChat/" + usrid;
             console.log("url: " + url);
 
             $http.get(url).then(
@@ -31,5 +32,23 @@ angular.module('JEChat').controller('ProfileController', ['$http', '$log', '$sco
             );
         };
 
+        this.loadUsers = function(){
+          var url = "https://jechat-restapi.herokuapp.com/JEChat/Users"
+          $http.get(url).then(
+            function(response){
+              console.log("info: " + JSON.stringify(response.data));
+              thisCTRL.population = response.data.Users;
+            },
+            function(response){
+              var status = response.status;
+              if (status) {
+                  alert("Something went wrong");
+              }
+            }
+          );
+
+        };
+
         this.loadProfile();
+        this.loadUsers();
     }]);

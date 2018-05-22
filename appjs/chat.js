@@ -15,7 +15,7 @@ angular.module('JEChat').controller('ChatController', ['$http', '$log', '$scope'
 
             console.log('Im inside chat.js');
             //URL for Messages
-            var url = "http://localhost:4545/JEChat/"+user+"/GroupChats/"+group;
+            var url = "https://jechat-restapi.herokuapp.com/JEChat/"+user+"/GroupChats/"+group;
             console.log("url: " + url)
 
             $http.get(url).then(
@@ -55,43 +55,45 @@ angular.module('JEChat').controller('ChatController', ['$http', '$log', '$scope'
             var msg = thisCtrl.newText;
             var user = $routeParams.user;
             var nextId = thisCtrl.counter++;
-            var url_b = "http://127.0.0.1:4545/JEChat/"+user;
+            var url = "https://jechat-restapi.herokuapp.com/JEChat/"+user+"/GroupChats/"+$routeParams.groupname;
             var author;
 
-            $http.get(url_b).then(
-              //Success Function
-              function(response){
+            console.log(url);
 
-                console.log("info: " + JSON.stringify(response.data));
-                thisCtrl.user = response.data.User;
-                author = thisCtrl.user.firstname + " " + thisCtrl.user.lastname;
-
-                if(thisCtrl.messageList.length == 0) {nextId=0;};
-                console.log(nextId);
-                thisCtrl.messageList.unshift({"id": nextId, "content" : msg, "name" : author, "like" : 0, "nolike" : 0});
-                thisCtrl.newText = "";
-
-              },
-              //Error function
-              function(response){
-                var status = response.status;
-                if (status == 0) {
-                    alert("No hay conexion a Internet");
-                }
-                else if (status == 401) {
-                    alert("Su sesion expiro. Conectese de nuevo.");
-                }
-                else if (status == 403) {
-                    alert("No esta autorizado a usar el sistema.");
-                }
-                else if (status == 404) {
-                    alert("No se encontro la informacion solicitada.");
-                }
-                else {
-                    alert("Error interno del sistema.");
-                }
-              }
-            );
+            // $http.get(url).then(
+            //   //Success Function
+            //   function(response){
+            //
+            //     console.log("info: " + JSON.stringify(response.data));
+            //     thisCtrl.user = response.data.User;
+            //     author = thisCtrl.user.firstname + " " + thisCtrl.user.lastname;
+            //
+            //     if(thisCtrl.messageList.length == 0) {nextId=0;};
+            //     console.log(nextId);
+            //     thisCtrl.messageList.unshift({"id": nextId, "content" : msg, "name" : author, "like" : 0, "nolike" : 0});
+            //     thisCtrl.newText = "";
+            //
+            //   },
+            //   //Error function
+            //   function(response){
+            //     var status = response.status;
+            //     if (status == 0) {
+            //         alert("No hay conexion a Internet");
+            //     }
+            //     else if (status == 401) {
+            //         alert("Su sesion expiro. Conectese de nuevo.");
+            //     }
+            //     else if (status == 403) {
+            //         alert("No esta autorizado a usar el sistema.");
+            //     }
+            //     else if (status == 404) {
+            //         alert("No se encontro la informacion solicitada.");
+            //     }
+            //     else {
+            //         alert("Error interno del sistema.");
+            //     }
+            //   }
+            // );
 
             // thisCtrl.messageList.unshift({"id": nextId, "content" : msg, "name" : author, "like" : 0, "nolike" : 0});
             // thisCtrl.newText = "";

@@ -21,6 +21,12 @@
           controllerAs: 'registerCtrl'
 
         })
+        .when('/JEChat/Users/all', {
+          templateUrl: 'pages/population.html',
+          controller: 'ProfileController',
+          controllerAs: 'profileCtrl'
+
+        })
         .when('/JEChat/:uid/Groupchats', {
             templateUrl: 'pages/groupchats.html',
             controller: 'GroupController',

@@ -13,7 +13,7 @@ angular.module('JEChat').controller('LogController', ['$scope', '$location', '$h
       console.log('Im inside login.js');
       console.log(form);
 
-      var url = 'http://localhost:4545/JEChat/login';
+      var url = 'https://jechat-restapi.herokuapp.com/JEChat/login';
       $http.post(url, form).then(
         //success function
         function(response) {

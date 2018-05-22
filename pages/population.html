@@ -1,0 +1,18 @@
+<div>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th>Username</th>
+      <th>ID</th>
+    </tr>
+    <tr ng-repeat="user in profileCtrl.population">
+        <td>{{user.firstname + " " + user.lastname}}</td>
+        <td>{{user.phone}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.username}}</td>
+        <td>{{user.usrid}}</td>
+    </tr>
+  </table>
+</div>

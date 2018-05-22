@@ -12,7 +12,7 @@ function($scope, $http, $routeParams, $location) {
 
       console.log(form);
 
-      var url = "http://localhost:4545/JEChat/register"
+      var url = "https://jechat-restapi.herokuapp.com/JEChat/register"
 
       if(form.password == $scope.repassword){
         console.log("True")
