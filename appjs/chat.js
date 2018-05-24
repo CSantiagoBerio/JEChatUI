@@ -7,7 +7,7 @@ function($http, $log, $scope, $routeParams) {
   this.reactions = {};
   this.user = {};
   this.counter = 0;
-  $scope.replyText;
+  this.replyText;
 
   $scope.loadMessages = function(){
 
@@ -161,38 +161,57 @@ function($http, $log, $scope, $routeParams) {
   $scope.reply = function(messageid){
     var url = "http://jechat-restapi.herokuapp.com/JEChat/"+$routeParams.groupname+"/Messages/"+messageid+"/replies";
     console.log(url);
-    var form = {'user': $routeParams.user, 'mid': messageid, 'groupname': $routeParams.groupname, 'content': thisCtrl.replyText};
+    var form = {'user': $routeParams.user, 'mid': messageid, 'groupname': $routeParams.groupname, 'content': thisCtrl.replyText}
     console.log(form);
 
-    $http.post(url, form).then(
-      function(response){
-        console.log(response.data);
-        $scope.loadMessages();
-      },
-      function(response){
-        var status = response.status;
-        if (status == 0) {
-          alert("No hay conexion a Internet");
-        }
-        else if (status == 401) {
-          alert("Su sesion expiro. Conectese de nuevo.");
-        }
-        else if (status == 403) {
-          alert("No esta autorizado a usar el sistema.");
-        }
-        else if (status == 404) {
-          alert("No se encontro la informacion solicitada.");
-        }
-        else {
-          alert("Error interno del sistema.");
-        }
-      }
-    );
-
+    // $http.post(url, form).then(
+    //   function(response){
+    //     console.log(response.data);
+    //     $scope.loadMessages();
+    //   },
+    //   function(response){
+    //     var status = response.status;
+    //     if (status == 0) {
+    //       alert("No hay conexion a Internet");
+    //     }
+    //     else if (status == 401) {
+    //       alert("Su sesion expiro. Conectese de nuevo.");
+    //     }
+    //     else if (status == 403) {
+    //       alert("No esta autorizado a usar el sistema.");
+    //     }
+    //     else if (status == 404) {
+    //       alert("No se encontro la informacion solicitada.");
+    //     }
+    //     else {
+    //       alert("Error interno del sistema.");
+    //     }
+    //   }
+    // );
     thisCtrl.replyText = [];
   };
 
+  //Pop up window for replies
+  // Get the modal
+  window.onload = function(){
 
+  // When the user clicks on the button, open the modal
+  $scope.openModal = function() {
+    document.getElementById('myModal').style.display = "block";
+  }
+
+  // When the user clicks on <span> (x), close the modal
+  $scope.closeModal = function() {
+    document.getElementById('myModal').style.display = "none";
+  }
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == document.getElementById('myModal')) {
+    document.getElementById('myModal').style.display = "none";
+    }
+  }
+};
 
   $scope.loadMessages();
 }]);
