@@ -7,7 +7,8 @@ function($http, $log, $scope, $routeParams) {
   this.reactions = {};
   this.user = {};
   this.counter = 0;
-  this.replyText;
+  this.replyText = [];
+  $scope.text;
 
   $scope.loadMessages = function(){
 
@@ -161,7 +162,7 @@ function($http, $log, $scope, $routeParams) {
   $scope.reply = function(messageid){
     var url = "http://jechat-restapi.herokuapp.com/JEChat/"+$routeParams.groupname+"/Messages/"+messageid+"/replies";
     console.log(url);
-    var form = {'user': $routeParams.user, 'mid': messageid, 'groupname': $routeParams.groupname, 'content': thisCtrl.replyText}
+    var form = {'user': $routeParams.user, 'mid': messageid, 'groupname': $routeParams.groupname, 'content': thisCtrl.replyText[0]}
     console.log(form);
 
     // $http.post(url, form).then(
@@ -189,7 +190,13 @@ function($http, $log, $scope, $routeParams) {
     //   }
     // );
     thisCtrl.replyText = [];
+    $scope.text = [];
   };
+
+  $scope.pushToArray = function(data){
+    thisCtrl.replyText.push(data);
+    $scope.text = [];
+  }
 
   //Pop up window for replies
   // Get the modal

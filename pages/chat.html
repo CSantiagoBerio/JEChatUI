@@ -31,6 +31,7 @@
               <p>
                 {{m.name}}
               </p>
+
             </div>
             <div class="card-action">
               <button class="btn-floating btn-small waves-effect waves-light blue" type="submit" name="likes" ng-model="m.id" ng-click="like(m.messageid)">
@@ -39,28 +40,11 @@
 
               <button class="btn-floating btn-small waves-effect waves-light blue" type="submit" ng-click="dislike(m.messageid)">
                 <i class="material-icons">thumb_down</i>
-              </button><span ng-bind="m.nolike"></span>{{m.dislikes}}
+              </button>{{m.dislikes}}
+              <input id="" type="text" placeholder="Reply Message" ng-model="text"></input>
+              <button id="myButton" class="btn-floating btn-small waves-effect waves-light blue" type="submit" ng-click="pushToArray(text); reply(m.messageid)"><i class="fa fa-reply"></i></button>
 
-              <button id="myButton" class="btn waves-effect waves-light blue" type="submit" ng-click="openModal()"><i class="fa fa-reply"></i></button>
-              <div id="myModal" class="modal">
-                <div class="modal-content">
-                  <div class="row">
-                    <div class="col s12 m6">
-                      <div class="card teal darken-1">
-                        <div class="card-content white-text">
-                          <span class="close" ng-click="closeModal()">&times;</span>
-                          <span class="card-title">Reply Message</span>
-                          <i class="material-icons prefix" style="color: white">mode_edit</i><span text-white style="font-size:larger; color:white">RE:</span>
-                          <textarea style="background: white" placeholder="Reply Message" class="materialize-textarea" ng-model="chatCtrl.replyText" required></textarea>
-                          <div class="card-action">
-                            <button class="btn" ng-click="reply(m.messageid); closeModal()">Reply<i class="fa fa-reply"></i></button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+
 
               <!-- <div id="myModal" class="modal">
                 <div class="modal-content">
