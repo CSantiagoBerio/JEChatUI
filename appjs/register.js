@@ -4,15 +4,26 @@ function($scope, $http, $routeParams, $location) {
   thisCtrl = this;
   $scope.registerForm = {};
   $scope.repassword;
+  $scope.listOfUsers = [];
 
   console.log('Inside register.js');
 
   $scope.register = function(){
       var form = $scope.registerForm;
-
       console.log(form);
-
       var url = "https://jechat-restapi.herokuapp.com/JEChat/register"
+      var reqUrl = "https://jechat-restapi.herokuapp.com/JEChat/Users/"+$scope.registerForm.username;
+      console.log(reqUrl);
+
+      $http.get(reqUrl).then(
+        function(response){
+          console.log(response.data);
+          if (response.data.Users.username == $scope.registerForm.username) {
+            window.confirm('Username already exists')
+            $scope.registerForm.username = [];
+          }
+        }
+      );
 
       if(form.password == $scope.repassword){
         console.log("True")

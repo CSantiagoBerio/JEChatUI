@@ -10,6 +10,7 @@ function($http, $log, $scope, $routeParams, $location) {
   this.replyText = [];
   $scope.text;
   this.likes = [];
+  $scope.credentials;
 
   $scope.loadMessages = function(){
 
@@ -205,6 +206,20 @@ function($http, $log, $scope, $routeParams, $location) {
 
   $scope.getList = function(messageid){
     $location.path('JEChat/'+$routeParams.groupname+'/'+messageid+'/reactions')
+  }
+
+  $scope.addMember = function(credentials){
+    var url = "http://jechat-restapi.herokuapp.com/JEChat/GroupChats/2/Members";
+    var form = {'groupname': $routeParams.groupname, 'credential': credentials};
+    console.log(url);
+    console.log(form);
+
+    $http.post(url, form).then(
+      function(response){
+        console.log(response.data);
+      }
+    )
+
   }
 
   $scope.loadMessages();
