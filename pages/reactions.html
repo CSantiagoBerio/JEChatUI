@@ -1,0 +1,66 @@
+<button class="btn" type="submit" ng-click="goback()">Back</button>
+<div class="row">
+   <div class="col s4 m6">
+     <div class="card teal darken-1">
+       <div class="card-content white-text">
+         <span class="card-title">Likes</span>
+         <table>
+           <thead>
+             <td>
+              User
+             </td>
+           </thead>
+           <tr ng-repeat="l in reactionsCtrl.like">
+             <td>
+               {{l.firstname}} {{l.lastname}}
+             </td>
+           </tr>
+         </table>
+       </div>
+     </div>
+   </div>
+ </div>
+
+ <div class="row">
+    <div class="col s4 m6">
+      <div class="card teal darken-1">
+        <div class="card-content white-text">
+          <span class="card-title">Dislikes</span>
+          <table>
+            <thead>
+              <td>
+               User
+              </td>
+            </thead>
+            <tr ng-repeat="l in reactionsCtrl.dislike">
+              <td>
+                {{l.firstname}} {{l.lastname}}
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+     <div class="col s4 m6">
+       <div class="card teal darken-1">
+         <div class="card-content white-text">
+           <span class="card-title">Replies</span>
+           <table>
+             <thead>
+               <td>
+                User
+               </td>
+             </thead>
+             <tr ng-repeat="l in reactionsCtrl.reply">
+               <td>
+                 {{l.firstname}} {{l.lastname}}
+               </td>
+             </tr>
+           </table>
+         </div>
+       </div>
+     </div>
+   </div>

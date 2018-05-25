@@ -21,6 +21,18 @@
           controllerAs: 'registerCtrl'
 
         })
+        .when('/JEChat/:userid/addressbook', {
+          templateUrl: 'pages/addressbook.html',
+          controller: 'ContactController',
+          controllerAs: 'contactCtrl'
+
+        })
+        .when('/JEChat/:groupname/:mid/reactions', {
+          templateUrl: 'pages/reactions.html',
+          controller: 'ReactionsController',
+          controllerAs: 'reactionsCtrl'
+
+        })
         .when('/JEChat/Users/all', {
           templateUrl: 'pages/population.html',
           controller: 'ProfileController',

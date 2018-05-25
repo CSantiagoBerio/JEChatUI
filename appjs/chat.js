@@ -1,5 +1,5 @@
-angular.module('JEChat').controller('ChatController', ['$http', '$log', '$scope', '$routeParams',
-function($http, $log, $scope, $routeParams) {
+angular.module('JEChat').controller('ChatController', ['$http', '$log', '$scope', '$routeParams', '$location',
+function($http, $log, $scope, $routeParams, $location) {
 
   var thisCtrl = this;
 
@@ -9,6 +9,7 @@ function($http, $log, $scope, $routeParams) {
   this.counter = 0;
   this.replyText = [];
   $scope.text;
+  this.likes = [];
 
   $scope.loadMessages = function(){
 
@@ -165,30 +166,30 @@ function($http, $log, $scope, $routeParams) {
     var form = {'user': $routeParams.user, 'mid': messageid, 'groupname': $routeParams.groupname, 'content': thisCtrl.replyText[0]}
     console.log(form);
 
-    // $http.post(url, form).then(
-    //   function(response){
-    //     console.log(response.data);
-    //     $scope.loadMessages();
-    //   },
-    //   function(response){
-    //     var status = response.status;
-    //     if (status == 0) {
-    //       alert("No hay conexion a Internet");
-    //     }
-    //     else if (status == 401) {
-    //       alert("Su sesion expiro. Conectese de nuevo.");
-    //     }
-    //     else if (status == 403) {
-    //       alert("No esta autorizado a usar el sistema.");
-    //     }
-    //     else if (status == 404) {
-    //       alert("No se encontro la informacion solicitada.");
-    //     }
-    //     else {
-    //       alert("Error interno del sistema.");
-    //     }
-    //   }
-    // );
+    $http.post(url, form).then(
+      function(response){
+        console.log(response.data);
+        $scope.loadMessages();
+      },
+      function(response){
+        var status = response.status;
+        if (status == 0) {
+          alert("No hay conexion a Internet");
+        }
+        else if (status == 401) {
+          alert("Su sesion expiro. Conectese de nuevo.");
+        }
+        else if (status == 403) {
+          alert("No esta autorizado a usar el sistema.");
+        }
+        else if (status == 404) {
+          alert("No se encontro la informacion solicitada.");
+        }
+        else {
+          alert("Error interno del sistema.");
+        }
+      }
+    );
     thisCtrl.replyText = [];
     $scope.text = [];
   };
@@ -196,29 +197,15 @@ function($http, $log, $scope, $routeParams) {
   $scope.pushToArray = function(data){
     thisCtrl.replyText.push(data);
     $scope.text = [];
-  }
+  };
 
-  //Pop up window for replies
-  // Get the modal
-  window.onload = function(){
+  $scope.goback = function(){
+    window.history.back();
+  };
 
-  // When the user clicks on the button, open the modal
-  $scope.openModal = function() {
-    document.getElementById('myModal').style.display = "block";
+  $scope.getList = function(messageid){
+    $location.path('JEChat/'+$routeParams.groupname+'/'+messageid+'/reactions')
   }
-
-  // When the user clicks on <span> (x), close the modal
-  $scope.closeModal = function() {
-    document.getElementById('myModal').style.display = "none";
-  }
-
-  // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function(event) {
-    if (event.target == document.getElementById('myModal')) {
-    document.getElementById('myModal').style.display = "none";
-    }
-  }
-};
 
   $scope.loadMessages();
 }]);

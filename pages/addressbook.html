@@ -1,0 +1,26 @@
+
+  <div class="row s4" ng-repeat="a in contactCtrl.addressbook">
+    <div class="col s4"></div>
+    <div class="col s12 m4">
+      <div class="card teal darken-1">
+        <div class="card-content white-text">
+          <span class="card-title">{{a.Name}}</span>
+          <table>
+            <thead>
+            <td style="text-align: center">Phone</td>
+            <td style="text-align: center">Email</td>
+            </thead>
+            <tr>
+              <td style="text-align: center">{{a.Phone}}</td>
+              <td style="text-align: center">{{a.Email}}</td>
+            </tr>
+          </table>
+        </div>
+        <div class="col s4 "></div>
+        <!-- <div class="card-action">
+          <a href="#">This is a link</a>
+          <a href="#">This is a link</a>
+        </div> -->
+      </div>
+    </div>
+  </div>
