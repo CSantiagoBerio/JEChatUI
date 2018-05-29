@@ -209,7 +209,7 @@ function($http, $log, $scope, $routeParams, $location) {
   }
 
   $scope.addMember = function(credentials){
-    var url = "http://jechat-restapi.herokuapp.com/JEChat/GroupChats/2/Members";
+    var url = "http://jechat-restapi.herokuapp.com/JEChat/GroupChats/Members";
     var form = {'groupname': $routeParams.groupname, 'credential': credentials};
     console.log(url);
     console.log(form);
